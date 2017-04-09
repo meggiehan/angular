@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>直接渲染html的安全问题</title>
+</head>
+<body>
+
+    <div ng-app='myapp' ng-controller='democontroller'>
+        {{name}}
+        <p ng-bind='name'></p>
+        <p ng-bind-html='name'></p>
+    </div>
+
+<script src="node_modules/angular/angular.js"></script>
+<script src="node_modules/angular-sanitize/angular-sanitize.js"></script>
+<script>
+    var app=angular.module('myapp',['ngSanitize']);
+    app.controller('democontroller',['$scope',function($scope){
+        $scope.name='<i>meggie</i>';
+    }]);
+</script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>ng-style</title>
+</head>
+<body ng-app='myapp' ng-controller='democontroller'>
+<div ng-init="str='width:200px;height:300px;background:lightgreen;'">
+    <div style='{{str}}'></div>
+</div>
+    <script src="node_modules/angular/angular.js"></script>
+    <script>
+        var app=angular.module('myapp',[]);
+        app.controller('democontroller',['$scope',function($scope){
+
+        }]);
+    </script>
+</body>
+</html>

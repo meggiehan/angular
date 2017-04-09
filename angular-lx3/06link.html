@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>link</title>
+</head>
+<body>
+    <div ng-app='myApp'>
+        <div style='width: 300px;height: 300px;background: pink;' ng-hover></div>
+    </div>
+    <script src="node_modules/angular/angular.js"></script>
+    <script>
+        var app=angular.module('myApp',[]);
+        app.directive('ngHover',function(){
+            return {
+                link:function(scope,element,attrs){
+                    element.bind('mouseover',function(){
+                        element.css('background','orange');
+                    });
+                    element.bind('mouseleave',function(){
+                        element.css('background','lightgreen');
+                    })
+                }
+            }
+        });
+    </script>
+</body>
+</html>

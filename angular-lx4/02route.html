@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>route</title>
+</head>
+<body ng-app='myApp' controller='stuController'>
+<p>123</p>
+<p ng-view></p>
+<p>666</p>
+<script src="node_modules/angular/angular.js"></script>
+<script src="node_modules/angular-route/angular-route.js"></script>
+<script>
+    var app=angular.module('myApp',['ngRoute']);
+    app.config(['$routeProvider',function($routeProvider){
+        $routeProvider.when('/student/:name',{
+            template:'<p>{{nowstu.id}}---{{nowstu.name}}---{{nowstu.grade}}</p>',
+            controller:'stuController'
+        })
+        .otherwise({redirectTo:'/student/'});
+    }]);
+
+    app.controller('stuController',['$scope','$routeParams','$route',function($scope,$routeParams,$route){
+        // $scope.name='meggie';
+        $scope.students={
+            zhangsan:{id:0,name:'zhangsan',grade:'onegrade'},
+            heihie:{id:1,name:'heihie',grade:'onegrade'},
+            sdfeew:{id:2,name:'sdfeew',grade:'onegrade'},
+            sefefw:{id:3,name:'sefefw',grade:'onegrade'},
+            dflkjie:{id:4,name:'dflkjie',grade:'onegrade'},
+            ewerew:{id:5,name:'ewerew',grade:'onegrade'},
+        };
+         $scope.nowstu=$scope.students[$routeParams.name];
+         if(!$scope.nowstu){
+            // $scope.nowstu=$scope.students['zhangsan'];
+            $route.updateParams({name:'zhangsan'});
+         }
+    }]);
+</script>
+</body>
+</html>

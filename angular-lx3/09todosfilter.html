@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>todosfilter</title>
+</head>
+<body ng-app='filterApp' ng-controller='filtercontroller'>
+<input type="text" name="" ng-model='search'>
+    <p ng-repeat='item in tasks | filter:search'>
+        {{item.id}}---{{item.name}}---{{item.completed}}
+    </p>
+
+<hr> 
+
+<input type="text" name="" ng-model='search'>
+    <p ng-repeat='item in tasks | filter:{completed:false}'>
+        {{item.id}}---{{item.name}}---{{item.completed}}
+    </p>
+
+    <script src="node_modules/angular/angular.js"></script>
+    <script>
+        var app=angular.module('filterApp',[]);
+        app.controller('filtercontroller',['$scope',function($scope){
+            $scope.search='';
+             var tasks=[
+        {id:1,name:'eating',completed:true},
+        {id:2,name:'sleeping true',completed:false},
+        {id:3,name:'playing',completed:true},
+        {id:4,name:'drinking',completed:false},
+        {id:5,name:'shoppin false',completed:true},
+        ];
+        $scope.tasks=tasks;
+        }]);
+    </script>
+</body>
+</html>

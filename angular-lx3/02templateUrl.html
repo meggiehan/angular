@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>templateUrl</title>
+</head>
+<body ng-app='myApp'>
+<div my-btn>
+ </div>
+  <script id='test' type='text/ng-template'>
+        <button>but</button>
+  </script>
+    <script src="node_modules/angular/angular.js"></script>
+    <script>
+        var app=angular.module('myApp',[]);
+        app.directive('myBtn',[function(){
+            obj={
+               // templateUrl:'./test.html'
+               templateUrl:'test'
+            };
+            return obj;
+        }]);
+    </script>
+</body>
+</html>

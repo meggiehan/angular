@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>jsonp</title>
+</head>
+<body>
+    <script>
+        function crossDomain(url,arg,fn){
+            var queryString='';
+            for(var key in arg){
+                queryString+=key+'='+arg[key]+'&';
+            }
+            url+='?'+queryString;
+            var callbackName='jsonp_'+Math.random().toString().substr(2);
+            window[callbackName]=function(data){
+                fn(data);
+            }
+            url+='callback='+callbackName;
+            var scriptElement=document.createElement('script');
+            scriptElement.src=url;
+            document.body.appendChild(scriptElement);
+        };
+
+        crossDomain('http://api.douban.com/v2/movie/in_theaters',{start:0,count:5},function(data){
+            console.log(data);
+        });
+    </script>
+</body>
+</html>

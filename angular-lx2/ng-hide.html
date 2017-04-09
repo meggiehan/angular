@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>ng-hide</title>
+     <style type="text/css">
+        ul{
+            width:70%;
+            margin-top:30px;
+            list-style:none;
+        }
+        .cos{
+            /* height: 30px; */
+            line-height:30px;
+            color:#fff;
+        }
+        .green{
+            background-color:lightgreen;
+        }
+        .orange{
+            background-color:orange;
+        }
+        .pink{
+            background-color:pink;
+        }
+        .fontcolor{
+            color:#000;
+        }
+    </style>
+</head>
+<body>
+
+<div ng-app='myapp' ng-controller='democontroller'>
+        <ul class="cos">
+            <li ng-repeat='item in data' ng-class="{'A':'green','B':'orange','C':'pink'}[item.salay]"  ng-show='item.salay=="A"'>
+            {{item.name}}------{{item.age}}-----{{item.salay}}------{{$id}}------{{$index}}
+            </li>
+        </ul>
+
+
+         <ul class="cos">
+            <li ng-repeat='item in data' ng-class="{'A':'green','B':'orange','C':'pink'}[item.salay]" ng-hide='item.salay=="B"'>
+            {{item.name}}------{{item.age}}-----{{item.salay}}------{{$id}}------{{$index}}
+            </li>
+        </ul>
+</div>
+
+    <script src="node_modules/angular/angular.js"></script>
+    <script>
+
+
+        var app=angular.module('myapp',[]);
+        app.controller('democontroller',['$scope',function($scope){
+                $scope.data=[
+                    {name:'meggie',age:22,salay:'A'},
+                    {name:'meggie',age:22,salay:'B'},
+                    {name:'meggie',age:22,salay:'C'},
+                    {name:'meggie',age:22,salay:'B'},
+                    {name:'meggie',age:22,salay:'A'},
+                    {name:'meggie',age:22,salay:'C'},
+                ];
+        }]);
+    </script>
+</body>
+</html>

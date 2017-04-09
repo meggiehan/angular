@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>ng-repeat</title>
+    <style type="text/css">
+        ul{width:70%;}
+        .cos{height: 30px;line-height:30px;color:#fff;}
+        .green{background-color:lightgreen;}
+        .orange{background-color:orange;}
+    </style>
+</head>
+<body>
+
+<div ng-app='myapp' ng-controller='democontroller'>
+        <ul class="cos">
+            <li ng-repeat='item in data' class="{{$odd?'green':'orange'}}">{{item.name}}  ------ {{item.age}}-----{{$index}}------{{$first}}------{{$last}}</li>
+        </ul>
+</div>
+    <script src="node_modules/angular/angular.js"></script>
+
+    <script>
+        var app=angular.module('myapp',[]);
+        app.controller('democontroller',['$scope',function($scope){
+                $scope.data=[
+                    {name:'meggie',age:22},
+                    {name:'meggie',age:22},
+                    {name:'meggie',age:22},
+                    {name:'meggie',age:22},
+                    {name:'meggie',age:22},
+                    {name:'meggie',age:22},
+                ];
+        }]);
+    </script>
+</body>
+</html>

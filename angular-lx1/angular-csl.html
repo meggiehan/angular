@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>angular</title>
+</head>
+<body ng-app='myapp' ng-controller='demoController'>
+<input type="text" name="" ng-model='user.name'>
+<p>hello:{{user.name}}</p>
+    <script src="node_modules/angular/angular.js"></script>
+<script>
+    var app=angular.module('myapp',[]);
+    app.controller('demoController',function($scope){
+        $scope.user={};
+        $scope.user.name='小明';
+    });
+
+</script>
+</body>
+</html>

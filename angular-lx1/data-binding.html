@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>data-binding</title>
+</head>
+    <script src="node_modules/angular/angular.js"></script>
+<body ng-app='myapp' ng-controller='demoController'>
+    <input type="text" name="" ng-model='user.name'>
+    <p>hello:{{user.name}}</p>
+    <input type="button" name="" value="changename" ng-click='changeuser()'>
+    <input type="button" name="" value="inputname" ng-click='inputuser()'>
+    <script>
+        var app=angular.module('myapp',[]);
+        app.controller('demoController',function($scope){
+            $scope.user={name:'meggie'};
+            $scope.changeuser=function(){
+                $scope.user.name='stupid';
+            };
+            $scope.inputuser=function(){
+                alert($scope.user.name);
+            };
+        });
+    </script>
+</body>
+</html>

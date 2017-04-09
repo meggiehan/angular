@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>其他指令使用</title>
+</head>
+<body>
+    <div ng-app='myapp' ng-controller='democontroller'>
+        <input type="checkbox" name="" ng-checked='isselected'>
+    </div>
+    <script src="node_modules/angular/angular.js"></script>
+    <script>
+        var app=angular.module('myapp',[]);
+        app.controller('democontroller',['$scope',function($scope){
+            $scope.isselected=true;
+        }]);
+    </script>
+</body>
+</html>

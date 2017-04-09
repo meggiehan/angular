@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>calculate</title>
+</head>
+<body ng-app>
+    <input type="text" name="" ng-model='vala'> /
+    <input type="text" name="" ng-model='valb'>
+    <input type="button" value="=" ng-click='result=(vala-0)/(valb-0)'>
+    <input type="text" name="" ng-model='result'>
+
+<p>{{vala+valb}}</p>
+<!--这个p标签里如果不加-0转换成数字型，那个就可以实现字符串拼接-->
+
+    <script src="node_modules/angular/angular.js"></script>
+</body>
+</html>

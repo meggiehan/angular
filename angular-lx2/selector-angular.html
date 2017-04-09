@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>使用angular进行dom操作</title>
+</head>
+<body>
+<!-- <div id='demo'>
+
+</div> -->
+<input type="button" value="click" id='demo'>
+    <!-- <script src='node_modules/jquery/dist/jquery.js'></script> -->
+    <script src="node_modules/angular/angular.js"></script>
+    <script>
+        console.log(angular.element(document.querySelector('#demo')));
+        // console.log(jQuery===angular.element);
+
+        angular.element(document.querySelector('#demo')).bind('click',function(){
+            console.log('already onclick');
+        });
+    </script>
+</body>
+</html>

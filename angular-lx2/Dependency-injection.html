@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>模拟依赖注入</title>
+</head>
+<body>
+    <script>
+        function test(callback){
+        var name='meggie';
+        var func=callback.toString();
+        var arr=func.split(/\(|\)/);
+        var arg=arr[1];
+        console.log(arg);
+        callback(name);
+    }
+
+
+    test(function(name){
+        console.log(name);
+    });
+    </script>
+</body>
+</html>

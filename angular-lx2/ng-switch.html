@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>ng-switch</title>
+    <style type="text/css">
+        .ng-cloak{
+            display: none;
+        }
+    </style>
+</head>
+<body ng-app='myapp'>
+<div ng-controller='democontroller'>
+    <div ng-switch='name' class="ng-cloak">
+        <div ng-switch-when='meggie'> hi my name is meggie</div>
+        <div ng-switch-when='sendy'> hi my name is sendy</div>
+        <div ng-switch-when='meggie'> hi my name is meggie</div>
+        <div ng-switch-when='grens'> hi my name is grens</div>
+        <div ng-switch-when='meggie'> hi my name is meggie</div>
+    </div>
+</div>
+    <script src="node_modules/angular/angular.js"></script>
+    <script>
+        var app=angular.module('myapp',[]);
+        app.controller('democontroller',['$scope',function($scope){
+            $scope.name='meggie';
+        }]);
+    </script>
+</body>
+</html>

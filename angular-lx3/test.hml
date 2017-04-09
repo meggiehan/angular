@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body ng-app="myApp" ng-controller="myController">
+    <ul>
+        <li ng-repeat="item in arr | filter:{isSeaon:true} | orderBy: 'price'">
+            {{item.name}} -- {{item.price}}
+        </li>
+    </ul>
+    <script src="./node_modules/angular/angular.js"></script>
+    <script>
+        var myApp = angular.module('myApp',[]);
+        myApp.controller('myController',function($scope){
+            $scope.arr = [
+                {name:'苹果',price:15,isSeaon:true},
+                {name:'桔子',price:20,isSeaon:false},
+                {name:'香蕉',price:25,isSeaon:true},
+                {name:'梨子',price:30,isSeaon:false}
+            ];
+        });
+    </script>
+</body>
+</html>

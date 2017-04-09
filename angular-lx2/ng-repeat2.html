@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>ng-repeat</title>
+</head>
+<body ng-app='myapp' ng-controller='democontroller'>
+    <ul>
+        <li ng-repeat='i in arr track by $index'>
+            {{i}}
+            <ul>
+                <li ng-repeat='j in arr track by $index'>
+                    {{j}}
+                       <ul>
+                       <li ng-repeat='j in arr track by $index'>
+                           {{j}}
+
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <script src="node_modules/angular/angular.js"></script>
+     <script>
+        var app=angular.module('myapp',[]);
+        app.controller('democontroller',['$scope',function($scope){
+            $scope.arr=[1,2,3,4,5,1];
+        }]);
+    </script>
+</body>
+</html>

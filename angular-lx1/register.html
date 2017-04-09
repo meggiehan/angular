@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>register</title>
+    <style type="text/css">
+        form{
+            /* border:1px solid #ccc; */
+            width:300px;
+            height:500px;
+            margin:0 auto;
+        }
+        input{
+            float: right;
+        }
+        p{
+            position:absolute;
+            top:30px;
+            left:650px;
+        }
+    </style>
+</head>
+<body>
+   <form ng-app='myapp' ng-controller='demoController'>
+       <label>用户名:</label><input type="text" value="" ng-model='username'><br>
+       <label>密码:</label><input type="text" value="" ng-model='password'><br>
+       <label>确认密码:</label><input type="text" value="" ng-model='confirm'><br>
+       <label>是否同意:</label><input type="checkbox" value="" ng-model='isagree'><br>
+       <label>注册按钮:</label><input type="button" value="注册" ng-click='register()'><br>
+       <p>{{msg}}</p>
+   </form>
+   <script src="node_modules/angular/angular.js"></script>
+   <script>
+       var app=angular.module('myapp',[]);
+       app.controller('demoController',function($scope){
+            $scope.username='';
+            $scope.password='';
+            $scope.confirm='';
+            $scope.isagree=false;
+            $scope.msg='';
+
+            $scope.register=function(){
+                if($scope.username.length>6){
+                    $scope.msg='用户名太长';
+                    return;
+                }
+                if($scope.password!=$scope.confirm){
+                    $scope.msg='密码与确认密码不相等';
+                    return;
+                }
+                if(!$scope.isagree){
+                    $scope.msg='请同意用户协议';
+                    return;
+                }
+
+                var user=new User($scope.username,$scope.password);
+                var result=user.save();
+                if(result){
+                    $scope.msg='success';
+                }else{
+                    $scope.msg='failure';
+                }
+            };
+
+       });
+
+       function User(username,password){
+        this.username=username;
+        this.password=password;
+       }
+
+       User.prototype.save=function(){
+        var data=localStorage.getItem('user')|| '[]';
+        var users=JSON.parse(data);
+        for(var i=0; i<users.length;i++){
+            var item=users[i];
+            if(item.username==this.username){
+                return false;
+            }
+        }
+
+        users.push({username:this.username,password:this.password});
+        localStorage.setItem('user',JSON.stringify(users))
+        return true;
+       }
+   </script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>limitTo</title>
+</head>
+<body ng-app='myApp' ng-controller='democontroller'>
+    <h1>currency</h1>
+    <p>{{money |currency:'￥'}}</p>
+
+    <h1>date</h1>
+    <p>{{mydate |date:'yyyy-MM-dd hh-mm-ss'}}</p>
+    <p>{{mydate |date:'yyyy/MM/dd hh/mm/ss'}}</p>
+
+    <h1>limitTo</h1>
+    <p>{{mytext |limitTo:11:1}}···</p>
+
+    <script src="node_modules/angular/angular.js"></script>
+    <script>
+        var app=angular.module('myApp',[]);
+        app.controller('democontroller',['$scope',function($scope){
+            $scope.money=12356.122;
+            $scope.mydate=1487502753655;
+            $scope.mytext='你和我去成都的街头走一走，喔喔喔';
+        }]);
+    </script>
+</body>
+</html>

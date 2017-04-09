@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>filter</title>
+</head>
+<body ng-app='myApp' ng-controller='democontroller'>
+    <!--1487497469913-->
+    <h1>currency</h1>
+    <p>{{money |currency:'￥'}}</p>
+
+    <h1>date</h1>
+    <p>{{mydate |date:'yyyy-MM-dd hh-mm-ss'}}</p>
+    <p>{{mydate |date:'yyyy/MM/dd hh/mm/ss'}}</p>
+    <script src="node_modules/angular/angular.js"></script>
+    <script>
+        var app=angular.module('myApp',[]);
+        app.controller('democontroller',['$scope',function($scope){
+            $scope.money=12356.122;
+            $scope.mydate=1487497469913;
+        }]);
+    </script>
+</body>
+</html>

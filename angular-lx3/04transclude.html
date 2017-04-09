@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>custom-instruction</title>
+</head>
+<body ng-app='myApp'>
+ <div class="hello">登录</div>
+ <hello>注册</hello>
+ <hello></hello>
+  <script id='test' type='text/ng-template'>
+       <h1 ng-transclude>hello</h1>
+  </script>
+    <script src="node_modules/angular/angular.js"></script>
+    <script>
+        var app=angular.module('myApp',[]);
+        app.directive('hello',function(){
+            obj={
+                // template:'<h1 ng-transclude>hello meggie!</h1>',
+                templateUrl:'test',
+                restrict:'ACEM',
+                transclude:true
+            };
+            return obj;
+        });
+    </script>
+</body>
+</html>

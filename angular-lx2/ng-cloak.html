@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>ng-cloak</title>
+    <style type="text/css">
+        .ng-cloak{
+            display:none;
+        }
+    </style>
+</head>
+<body>
+    <!--ng-bind缺陷：1当多处使用时，书写麻烦2必须是双标签，并且会替换掉标签的内容3，不能使用构造函数来比如：obj.name-->
+
+    <div ng-app='myapp' ng-controller='democontroller'>
+        <p class="ng-cloak">{{name}}</p>
+    </div>
+
+    <script src="node_modules/angular/angular.js"></script>
+     <script>
+        var app=angular.module('myapp',[]);
+        app.controller('democontroller',['$scope',function($scope){
+            $scope.name='meggie';
+        }]);
+    </script>
+</body>
+</html>

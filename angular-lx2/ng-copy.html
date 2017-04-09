@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>ng-copy</title>
+</head>
+<body ng-app='myapp' ng-controller='democontroller'>
+<input ng-copy="count=count+1" ng-init='count=0' value="copytext">
+<p>copytext{{count}}</p>
+    <script src="node_modules/angular/angular.js"></script>
+    <script>
+        var app=angular.module('myapp',[]);
+        app.controller('democontroller',['$scope',function($scope){
+
+        }]);
+    </script>
+</body>
+</html>

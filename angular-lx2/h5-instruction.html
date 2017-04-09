@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>h5 data-ng-app</title>
+    <style type="text/css">
+        .ng-cloak{
+            display: none;
+        }
+    </style>
+</head>
+<body data-ng-app='myapp'>
+    <div data-ng-controller='democontroller'>
+        <input type="text" data-ng-model='name'>
+            <p class="ng-cloak">{{name}}</p>
+    </div>
+    <script src="node_modules/angular/angular.js"></script>
+    <script>
+        var app=angular.module('myapp',[]);
+        app.controller('democontroller',['$scope',function($scope){
+            $scope.name='meggie';
+        }]);
+    </script>
+</body>
+</html>

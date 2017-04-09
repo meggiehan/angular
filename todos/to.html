@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>todos</title>
+    <style type="text/css">
+    body{
+        background:url('./1.jpeg') no-repeat center top/contain;
+        background-size:100% 180%;
+    }
+        .box{
+            width:500px;
+            min-height:320px;
+            background-color:#DEEFA9;
+            margin-top:80px;
+            margin-left:10px;
+            box-shadow:5px;
+            /* margin-bottom:30px; */
+        }
+        h3{
+            color:orange;
+            text-align:center;
+            font-size:28px;
+            padding-top:10px;
+        }
+        ul{
+            list-style:none;
+            margin:0;
+            padding:0;
+
+        }
+        ul li{
+            width: 100%;
+            height: 36px;
+            line-height:36px;
+            background-color:#F6FAE1;
+            border-bottom:1px solid #ccc;
+            margin-top:3px;
+        }
+        label{
+            color:pink;
+        }
+        .first{
+            width:78%;
+            height:30px;
+
+        }
+        input::-webkit-input-placeholder{
+            font-size:16px;
+            color: lightgreen;
+        }
+
+        .close{
+            color:pink;
+        }
+        .three{
+            display: inline-block;
+            width:33%;
+            vertical-align:middle;
+        }
+        .sb{
+            width:33%;
+            height:20px;
+        }
+        .line{
+            text-decoration:line-through;
+        }
+        .bot{
+            margin-top:80px;
+            width:18%;
+            margin-left:5px;
+            font-size:18px;
+            background-color:#D1E095;
+            list-style:none;
+            color:#5C7536;
+        }
+    </style>
+</head>
+<body ng-app='myapp' ng-controller='democontroller'>
+    <div class="box">
+        <h3>todos</h3>
+        <lable>My plan:</lable><input class="first" type="text" name="" placeholder="What needs to be done ?" value=""
+            ng-model='plan' ng-keyup='add($event)' >
+        <ul>
+            <li ng-repeat='key in data track by $index' ng-show="key.show">
+                <input type="checkbox" name="" ng-model='key.isdo' class="three sb">
+                <span class="three" ng-class='{line:key.isdo}'>{{key.name}}</span>
+                <span class="close" ng-click='close($index)'>X</span>
+            </li>
+        </ul>
+        <input type="button" name="" value="all" class="bot" id='all' ng-click='all()'>
+        <input type="button" name="" value="list" class="bot" id='list' ng-click='list()'>
+        <input type="button" name="" value="has done" class="bot" ng-click='hasdone()'>
+        <input type="button" name="" value="not done" class="bot" ng-click='notdone()'>
+        <input type="button" name="" value="clear" class="bot" ng-click='clear()'>
+        <!-- <input type="button" name="" value="cancel" class="bot" ng-cli.ck='cancel()'> -->
+    </div>
+    <script src="node_modules/angular/angular.js"></script>
+    <script>
+        var app=angular.module('myapp',[]);
+        app.controller('democontroller',['$scope',function($scope){
+            var isAll = false;
+            $scope.data=[
+                {name:'eating',isdo:true , show: true},
+                {name:'sleeping',isdo:false , show: true}
+            ];
+            $scope.add=function(e){
+                if(e.keyCode==13){
+                    $scope.data.push({name:$scope.plan, isdo:false, show:true});
+                    $scope.plan='';
+                }
+            };
+            $scope.close=function(index){
+                $scope.data.splice(index,1);
+            };
+            //全选&全显
+            $scope.all=function(){
+                checked = !isAll;
+                for(var i=0;i<$scope.data.length;i++){
+                    $scope.data[i].isdo = checked;
+                    $scope.data[i].show = true;
+                }
+                isAll = checked;
+            }
+        //全显
+        $scope.list=function(){
+            for(var i=0;i<$scope.data.length;i++){
+                $scope.data[i].show = true;
+            }
+        }
+         $scope.cancel=function(){
+             window.close()
+         };
+         $scope.clear=function(){
+            $scope.data=[];
+         };
+         //显示全部选中的
+         $scope.hasdone=function(){
+            for(var i=0;i<$scope.data.length;i++){
+                if($scope.data[i].isdo){
+                    $scope.data[i].show = true;
+                }else{
+                    $scope.data[i].show = false;
+                }
+            }
+         };
+        $scope.notdone=function(){
+            for(var i=0;i<$scope.data.length;i++){
+                if(!$scope.data[i].isdo){
+                    $scope.data[i].show = true;
+                }else{
+                    $scope.data[i].show = false;
+                }
+            }
+        };
+        }]);
+    </script>
+</body>
+</html>

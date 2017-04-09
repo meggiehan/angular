@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>传统的方式创建控制器</title>
+</head>
+<body ng-app>
+    <div ng-controller='mycontroller'>
+        <input type="text" >
+        {{name}}
+    </div>
+
+    <script src="angular 1.2.29.js"></script>
+
+    <script>
+        function mycontroller($scope){
+              $scope.name='meggie';
+        }
+    </script>
+</body>
+</html>

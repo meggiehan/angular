@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>scope</title>
+</head>
+<body ng-app='myApp'>
+    <div my-btn title='标题1' content='内容1'></div>
+    <div my-btn title='标题1' content='内容1'></div>
+    <div my-btn title='标题1' content='内容1'></div>
+    <div my-btn title='标题1' content='内容1'></div>
+    <div my-btn title='标题1' content='内容1'></div>
+    <div class="my-btn"></div>
+    <!-- directive:my-btn -->
+   <my-btn></my-btn>
+    <script id='test' type='text/ng-template'>
+       <div>{{title}}</div>
+       <div>{{content}}</div>
+  </script>
+    <script src="node_modules/angular/angular.js"></script>
+    <script>
+        var app=angular.module('myApp',[]);
+        app.directive('myBtn',[function(){
+            obj={
+                // template:'<button>meggie</button>',
+                templateUrl:'test',
+                restrict:'ACEM',
+                scope:{
+                    title:'@',
+                    content:'@'
+                }
+            };
+            return obj;
+        }]);
+    </script>
+</body>
+</html>

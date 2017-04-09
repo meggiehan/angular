@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>ng-repeat</title>
+</head>
+<body>
+
+<div ng-app='myapp' ng-controller='democontroller'>
+        <ul>
+            <li ng-repeat='(index,item) in data'>{{item.name}}  ------ {{item.age}}</li>
+        </ul>
+
+    <div ng-repeat='key in data'>
+        {{key.name}} ------ {{key.age}}
+    </div>
+
+    <ul>
+        <li ng-repeat='key in testdata track by $index'>{{key}}</li>
+    </ul>
+
+    <div ng-repeat='item in obj'>
+        {{item.name}}------{{item.age}}
+    </div>
+
+     <div ng-repeat='item in word'>
+        {{item}}
+    </div>
+    </div>
+
+    <script src="node_modules/angular/angular.js"></script>
+    <script>
+
+
+        var app=angular.module('myapp',[]);
+        app.controller('democontroller',['$scope',function($scope){
+                $scope.data=[
+                    {name:'meggie',age:22},
+                    {name:'marry',age:22},
+                    {name:'lee',age:22},
+                    {name:'jack',age:22},
+                    {name:'link',age:22},
+                    {name:'sear',age:22},
+                ];
+                $scope.testdata=[1,2,3,4,5,1,5];
+                $scope.obj={
+                    meggie:{name:'meggie',age:22},
+                    me:{name:'meggie',age:22},
+                    meg:{name:'meggie',age:22},
+                    megge:{name:'meggie',age:22},
+                    megie:{name:'meggie',age:22},
+                    meggi:{name:'meggie',age:22},
+                };
+                $scope.word=['a','b','c','d','e','f'];
+        }]);
+    </script>
+</body>
+</html>

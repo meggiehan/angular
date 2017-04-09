@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>$watch</title>
+</head>
+<body ng-app='myapp' ng-controller='demoController'>
+    <input type="text" name="" ng-model='name'>
+    <script src="node_modules/angular/angular.js"></script>
+    <script>
+        var app=angular.module('myapp',[]);
+        app.controller('demoController',function($scope){
+            $scope.name='meggie';
+            $scope.$watch('name',function(nowval,oldval){
+                console.log(nowval);
+                console.log(oldval);
+            });
+        })
+    </script>
+</body>
+</html>

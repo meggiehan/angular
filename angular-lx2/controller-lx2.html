@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>面向对象的方式创建控制器</title>
+</head>
+<script src="node_modules/angular/angular.js"></script>
+<body ng-app='myapp'>
+    <div ng-controller='democontroller as obj'>
+        {{obj.name}}
+        {{obj.age}}
+    </div>
+    <script>
+        var app=angular.module('myapp',[]);
+        app.controller('democontroller',function($scope){
+            this.name='meggie';
+            this.age='22';
+        })
+    </script>
+</body>
+</html>
